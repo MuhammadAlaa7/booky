@@ -2,6 +2,8 @@ import 'package:booky/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'book_rating.dart';
+
 class BookItem extends StatelessWidget {
   const BookItem({super.key});
 
@@ -84,34 +86,3 @@ class BookItem extends StatelessWidget {
   }
 }
 
-class BookRating extends StatelessWidget {
-  const BookRating({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Icon(
-          Icons.star_rounded,
-          color: Colors.amber,
-        ),
-        const SizedBox(
-          width: 5,
-        ),
-        const Text(
-          '4.5',
-          style: TextStyle(),
-        ),
-        const SizedBox(
-          width: 5,
-        ),
-        Text(
-          '(2390)',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.5),
-          ),
-        ),
-      ],
-    );
-  }
-}
