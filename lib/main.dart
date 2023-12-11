@@ -3,11 +3,11 @@ import 'package:booky/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const BookyApp());
+  runApp(const BooklyApp());
 }
 
-class BookyApp extends StatelessWidget {
-  const BookyApp({super.key});
+class BooklyApp extends StatelessWidget {
+  const BooklyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,3 +22,15 @@ class BookyApp extends StatelessWidget {
     );
   }
 }
+// TODO: SFAFASFLSDKFJALSKFJLKSA;FJSLKF
+// TODO: ASDF;LJSDF;LJ
+
+// ! BECAREFUL
+// ? HERE ARE THE MOST 
+// TODO: SDFASFD
+// todo: sadfjsa;fdlkjsalk;fj
+// TODO: ASD;FJSA;DLFJASL;FJ
+// * Important information is here 
+
+
+
