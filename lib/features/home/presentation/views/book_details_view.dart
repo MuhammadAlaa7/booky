@@ -15,6 +15,7 @@ class BookDetailsView extends StatelessWidget {
           DetailsAppBar(),
           DetailsImage(),
           BookMainInfo(),
+          PreviewButton(),
         ],
       ),
     );
@@ -44,7 +45,9 @@ class BookMainInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 30,) ,
+        const SizedBox(
+          height: 30,
+        ),
         const Text(
           'The Title of The Book',
           style: TextStyle(
@@ -52,7 +55,9 @@ class BookMainInfo extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        const SizedBox(height: 10,) ,
+        const SizedBox(
+          height: 10,
+        ),
         Text(
           'Book Author',
           style: TextStyle(
@@ -60,9 +65,75 @@ class BookMainInfo extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: Colors.white.withOpacity(0.7)),
         ),
-        const SizedBox(height: 10,) ,
+        const SizedBox(
+          height: 10,
+        ),
         const BookRating(),
       ],
+    );
+  }
+}
+
+class PreviewButton extends StatelessWidget {
+  const PreviewButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 30,
+        vertical: 30,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.all(12),
+                backgroundColor: Colors.white,
+                // side: BorderSide(color: Colors.yellow, width: 5),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(15),
+                    topLeft: Radius.circular(15),
+                  ),
+                ),
+              ),
+              onPressed: () {},
+              child: const Text(
+                'Free',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.all(12),
+                backgroundColor: const Color(0xffEF8262),
+                // side: BorderSide(color: Colors.yellow, width: 5),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                ),
+              ),
+              onPressed: () {},
+              child: const Text(
+                'Preview',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
