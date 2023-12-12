@@ -11,11 +11,20 @@ class BookDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DetailsAppBar(),
-          DetailsImage(),
+          Center(child: DetailsImage()),
           BookMainInfo(),
           PreviewButton(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+            child: Text(
+              'you can also like ',
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
+          ),
+          SimilarBooksListView(),
         ],
       ),
     );
@@ -31,8 +40,8 @@ class DetailsImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(30),
       child: Image.network(
         testImage,
-        cacheHeight: 300,
-        cacheWidth: 250,
+        cacheHeight: 250,
+        cacheWidth: 220,
       ),
     );
   }
@@ -81,7 +90,7 @@ class PreviewButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 30,
+        horizontal: 40,
         vertical: 30,
       ),
       child: Row(
@@ -89,7 +98,7 @@ class PreviewButton extends StatelessWidget {
           Expanded(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(10),
                 backgroundColor: Colors.white,
                 // side: BorderSide(color: Colors.yellow, width: 5),
                 shape: const RoundedRectangleBorder(
@@ -112,7 +121,7 @@ class PreviewButton extends StatelessWidget {
           Expanded(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(10),
                 backgroundColor: const Color(0xffEF8262),
                 // side: BorderSide(color: Colors.yellow, width: 5),
                 shape: const RoundedRectangleBorder(
@@ -133,6 +142,50 @@ class PreviewButton extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SimilarBooksListView extends StatelessWidget {
+  const SimilarBooksListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, top: 16),
+      child: SizedBox(
+        height: 150,
+        child: ListView.builder(
+          physics: const ClampingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return const SimilarBookItem();
+          },
+          itemCount: 5,
+        ),
+      ),
+    );
+  }
+}
+
+class SimilarBookItem extends StatelessWidget {
+  const SimilarBookItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(
+        right: 10,
+      ),
+      clipBehavior: Clip.antiAlias,
+      //height: ,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Image.network(
+        testImage,
+        fit: BoxFit.fill,
       ),
     );
   }

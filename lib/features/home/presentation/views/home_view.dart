@@ -11,8 +11,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-
-        physics: const BouncingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         children: const [
           HomeAppBar(),
           CategoriesListView(),
