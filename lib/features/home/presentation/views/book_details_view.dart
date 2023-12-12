@@ -169,6 +169,7 @@ class SimilarBooksListView extends StatelessWidget {
   }
 }
 
+// this is the similar books
 class SimilarBookItem extends StatelessWidget {
   const SimilarBookItem({super.key});
 
