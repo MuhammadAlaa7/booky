@@ -1,3 +1,4 @@
+import 'package:booky/core/manager/styles.dart';
 import 'package:booky/features/home/presentation/views/widgets/categories_list_view.dart';
 import 'package:booky/features/home/presentation/views/widgets/newest_books_list_view.dart';
 import 'package:flutter/material.dart';
@@ -12,23 +13,25 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: ListView(
         physics: const ClampingScrollPhysics(),
-        children: const [
-          HomeAppBar(),
-          CategoriesListView(),
-          SizedBox(
+        children: [
+          const HomeAppBar(),
+          const CategoriesListView(),
+          const SizedBox(
             height: 50,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Text(
               'Newest Books',
-              style: TextStyle(fontSize: 18),
+              style: textStyle18.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          NewestBooksListView(),
+          const NewestBooksListView(),
         ],
       ),
     );

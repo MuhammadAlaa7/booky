@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const BooklyApp()); //hello
 }
+
 //test commit
 class BooklyApp extends StatelessWidget {
   const BooklyApp({super.key});
@@ -14,10 +15,14 @@ class BooklyApp extends StatelessWidget {
     return SafeArea(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: kPrimaryColor,
-        ),
-       routerConfig: AppRouter.router,
+        theme: ThemeData(
+            scaffoldBackgroundColor: kPrimaryColor,
+            // primaryTextTheme: Typography().white,
+            textTheme: Typography().white,
+            iconTheme: const IconThemeData(
+              color: Colors.white,
+            )),
+        routerConfig: AppRouter.router,
       ),
     );
   }

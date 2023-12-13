@@ -1,3 +1,4 @@
+import 'package:booky/core/manager/styles.dart';
 import 'package:booky/core/utils/utils.dart';
 import 'package:booky/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
@@ -9,22 +10,26 @@ class BookDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DetailsAppBar(),
-          Center(child: DetailsImage()),
-          BookMainInfo(),
-          PreviewButton(),
+          const DetailsAppBar(),
+          const Center(
+            child: DetailsImage(),
+          ),
+          const BookMainInfo(),
+          const PreviewButton(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
             child: Text(
               'you can also like ',
-              style: TextStyle(color: Colors.white, fontSize: 15),
+              style: textStyle14.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
-          SimilarBooksListView(),
+          const SimilarBooksListView(),
         ],
       ),
     );
@@ -52,32 +57,26 @@ class BookMainInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const SizedBox(
+        SizedBox(
           height: 30,
         ),
-        const Text(
+        Text(
           'The Title of The Book',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
+          style: textStyle30,
+        ),
+        Opacity(
+          opacity: 0.7,
+          child: Text(
+            'Book Author',
+            style: textStyle18,
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 10,
         ),
-        Text(
-          'Book Author',
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Colors.white.withOpacity(0.7)),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        const BookRating(),
+        BookRating(),
       ],
     );
   }
@@ -98,7 +97,7 @@ class PreviewButton extends StatelessWidget {
           Expanded(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(15),
                 backgroundColor: Colors.white,
                 // side: BorderSide(color: Colors.yellow, width: 5),
                 shape: const RoundedRectangleBorder(
@@ -109,11 +108,11 @@ class PreviewButton extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
-              child: const Text(
+              child: Text(
                 'Free',
-                style: TextStyle(
+                style: textStyle18.copyWith(
+                  fontWeight: FontWeight.bold,
                   color: Colors.black,
-                  fontSize: 25,
                 ),
               ),
             ),
@@ -121,7 +120,7 @@ class PreviewButton extends StatelessWidget {
           Expanded(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(15),
                 backgroundColor: const Color(0xffEF8262),
                 // side: BorderSide(color: Colors.yellow, width: 5),
                 shape: const RoundedRectangleBorder(
@@ -132,11 +131,11 @@ class PreviewButton extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
-              child: const Text(
+              child: Text(
                 'Preview',
-                style: TextStyle(
+                style: textStyle18.copyWith(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:booky/core/manager/styles.dart';
 import 'package:booky/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +15,6 @@ class BookItem extends StatelessWidget {
         context.push(
           '/$bookDetailsViewPath',
         );
-      
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
@@ -48,7 +48,7 @@ class BookItem extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.6,
                     child: const Text(
                       'Here is the title of the book so long ',
-                      style: TextStyle(fontSize: 20),
+                      style: textStyle20,
                       textAlign: TextAlign.start,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -63,16 +63,20 @@ class BookItem extends StatelessWidget {
                           'Book Author',
                         )),
                   ),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10, vertical: 1.5),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 1.5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Free',
+                          style: textStyle20.copyWith(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        BookRating(),
+                        const BookRating(),
                       ],
                     ),
                   ),
@@ -85,4 +89,3 @@ class BookItem extends StatelessWidget {
     );
   }
 }
-

@@ -12,7 +12,7 @@ class DetailsAppBar extends StatelessWidget {
         left: 30,
         right: 26,
         bottom: 20,
-        top: 20,
+        top: 15,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,4 +1,4 @@
-
+import 'package:booky/core/manager/styles.dart';
 import 'package:flutter/material.dart';
 
 class BookRating extends StatelessWidget {
@@ -6,27 +6,28 @@ class BookRating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(
+        Icon(
           Icons.star_rounded,
           color: Colors.amber,
         ),
-        const SizedBox(
+        SizedBox(
           width: 7,
         ),
-        const Text(
+        Text(
           '4.5',
-          style: TextStyle(fontSize: 18),
+          style: textStyle16,
         ),
-        const SizedBox(
+        SizedBox(
           width: 5,
         ),
-        Text(
-          '(2390)',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.5),
+        Opacity(
+          opacity: 0.7,
+          child: Text(
+            '(2390)',
+            style: textStyle14,
           ),
         ),
       ],
