@@ -31,11 +31,8 @@ class BooklyApp extends StatelessWidget {
 // TODO: ASDF;LJSDF;LJ
 
 // ! BECAREFUL
-// ? HERE ARE THE MOST 
+// ? HERE ARE THE MOST
 // TODO: SDFASFD
 // todo: sadfjsa;fdlkjsalk;fj
 // TODO: ASD;FJSA;DLFJASL;FJ
-// * Important information is here 
-
-
-
+// * Important information is here

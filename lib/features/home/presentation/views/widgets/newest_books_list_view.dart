@@ -12,7 +12,7 @@ class NewestBooksListView extends StatelessWidget {
         right: 50,
       ),
       child: ListView.builder(
-        // YOU MUST MAKE IT SHRINK BECAUSE IT BECAME A UNIT 
+        // YOU MUST MAKE IT SHRINK BECAUSE IT BECAME A UNIT
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {

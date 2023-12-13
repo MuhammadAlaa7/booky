@@ -50,7 +50,9 @@ class _SplashViewState extends State<SplashView>
     // });
 
     Future.delayed(const Duration(seconds: 2), () {
-      context.pushReplacement('/$homeViewPath' ,);
+      context.pushReplacement(
+        '/$homeViewPath',
+      );
     });
     super.initState();
   }

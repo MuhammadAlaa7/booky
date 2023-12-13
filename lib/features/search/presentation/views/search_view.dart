@@ -1,4 +1,3 @@
-import 'package:booky/features/home/presentation/views/widgets/newest_books_list_view.dart';
 import 'package:booky/features/search/presentation/views/widgets/search_field.dart';
 import 'package:booky/features/search/presentation/views/widgets/search_list_view.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +23,7 @@ class SearchView extends StatelessWidget {
                 ),
               ),
               const Expanded(
-                child:  SearchFormField(),
+                child: SearchFormField(),
               ),
             ],
           ),

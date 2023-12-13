@@ -38,8 +38,6 @@ class HomeView extends StatelessWidget {
   }
 }
 
-
-
 /*
 
 The Idea of Displaying  Two ListViews in One ListView in the Same Screen

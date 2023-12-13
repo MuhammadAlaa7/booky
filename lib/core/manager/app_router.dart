@@ -8,8 +8,6 @@ import 'package:go_router/go_router.dart';
 import '../../features/home/presentation/views/book_details_view.dart';
 
 class AppRouter {
-  
-
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
       GoRoute(
@@ -22,17 +20,15 @@ class AppRouter {
             path: homeViewPath,
             builder: (BuildContext context, GoRouterState state) {
               return const HomeView();
-              
             },
-          
           ),
-           GoRoute(
+          GoRoute(
             path: bookDetailsViewPath,
             builder: (BuildContext context, GoRouterState state) {
               return const BookDetailsView();
             },
           ),
-             GoRoute(
+          GoRoute(
             path: searchViewPath,
             builder: (BuildContext context, GoRouterState state) {
               return const SearchView();

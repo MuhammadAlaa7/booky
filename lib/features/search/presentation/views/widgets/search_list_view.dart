@@ -13,7 +13,7 @@ class SearchedBookListView extends StatelessWidget {
       ),
       child: ListView.builder(
         // YOU MUST MAKE IT SHRINK BECAUSE IT BECAME A UNIT
-        
+
         itemBuilder: (context, index) {
           return const BookItem();
         },
