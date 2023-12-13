@@ -1,4 +1,4 @@
-import 'package:booky/core/app_router.dart';
+import 'package:booky/core/manager/app_router.dart';
 import 'package:booky/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 

@@ -30,7 +30,7 @@ class DetailsAppBar extends StatelessWidget {
             icon: const Icon(
               FontAwesomeIcons.cartShopping,
             ),
-          )
+          ),
         ],
       ),
     );
