@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
           const HomeAppBar(),
           const CategoriesListView(),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -38,11 +38,11 @@ class HomeView extends StatelessWidget {
             builder: (context, state) {
               var cubit = BlocProvider.of<HomeCubit>(context);
               if (state is HomeFailureState) {
-               return  Text(state.errorMessage);
+                return Text(state.errorMessage);
               } else if (state is HomeSuccessState) {
                 return NewestBooksListView(books: state.booksss);
               } else {
-                 return const Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }

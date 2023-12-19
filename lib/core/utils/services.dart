@@ -14,4 +14,17 @@ class BooklyServices {
     print(books[0].volumeInfo!.title);
     return books;
   }
+
+  static Future<List<BookModel>> getBooksByCategory({required categoryTitle }) async {
+    List<dynamic> data = await BooklyApi.get(
+        endPoint: 'volumes?Filtering=free-ebooks&q=subject:$categoryTitle');
+    List<BookModel> programmingBooks = [];
+    for (var book in data) {
+      programmingBooks.add(
+        BookModel.fromJson(book),
+      );
+    }
+    print(programmingBooks[0].volumeInfo!.title);
+    return programmingBooks;
+  }
 }

@@ -13,4 +13,11 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(HomeSuccessState(books));
     print('from cubit ${books[0].volumeInfo!.title}');
   }
+
+  Future<void> fetchBooksByCategory({required String categoryTitle}) async {
+    print('test  Programming');
+    books = await HomeRepoImp().fetchBooksByCategory(categoryTitle: categoryTitle );
+    emit(HomeSuccessState(books));
+    print('from cubit ${books[0].volumeInfo!.title}');
+  }
 }
