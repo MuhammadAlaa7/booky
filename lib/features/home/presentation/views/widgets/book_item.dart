@@ -19,6 +19,7 @@ class BookItem extends StatelessWidget {
       onTap: () {
         context.push(
           '/$bookDetailsViewPath',
+          extra: bookModel ,
         );
       },
       child: Padding(

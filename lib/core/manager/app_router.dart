@@ -1,3 +1,4 @@
+import 'package:booky/core/models/book_model.dart';
 import 'package:booky/core/utils/utils.dart';
 import 'package:booky/features/home/presentation/views/home_view.dart';
 import 'package:booky/features/search/presentation/views/search_view.dart';
@@ -25,7 +26,7 @@ class AppRouter {
           GoRoute(
             path: bookDetailsViewPath,
             builder: (BuildContext context, GoRouterState state) {
-              return const BookDetailsView();
+              return  BookDetailsView(bookModel: state.extra as BookModel,);
             },
           ),
           GoRoute(

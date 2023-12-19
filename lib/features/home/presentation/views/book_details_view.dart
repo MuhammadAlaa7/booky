@@ -1,82 +1,114 @@
 import 'package:booky/core/manager/styles.dart';
+import 'package:booky/core/models/book_model.dart';
 import 'package:booky/core/utils/utils.dart';
-import 'package:booky/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
-
 import 'widgets/details_app_bar.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
-
+  const BookDetailsView({
+    super.key,
+    required this.bookModel,
+  });
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const DetailsAppBar(),
-          const Center(
-            child: DetailsImage(),
-          ),
-          const BookMainInfo(),
-          const PreviewButton(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-            child: Text(
-              'you can also like ',
-              style: textStyle14.copyWith(
-                fontWeight: FontWeight.w600,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const DetailsAppBar(),
+            Center(
+              child: DetailsImage(
+                bookModel: bookModel,
               ),
             ),
-          ),
-          const SimilarBooksListView(),
-        ],
+            BookMainInfo(
+              bookModel: bookModel,
+            ),
+            const PreviewButton(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'you can also like ',
+                  style: textStyle14.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+            const SimilarBooksListView(),
+          ],
+        ),
       ),
     );
   }
 }
 
 class DetailsImage extends StatelessWidget {
-  const DetailsImage({super.key});
-
+  const DetailsImage({
+    super.key,
+    required this.bookModel,
+  });
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(30),
       child: Image.network(
-        testImage,
-        cacheHeight: 250,
-        cacheWidth: 220,
+        bookModel.volumeInfo?.imageLinks?.thumbnail ?? nullImage,
+        // cacheHeight: 300,
+        //  cacheWidth: 220,
+        height: MediaQuery.of(context).size.height * 0.30,
+        width: MediaQuery.of(context).size.height * 0.2,
+
+        fit: BoxFit.fill,
       ),
     );
   }
 }
 
 class BookMainInfo extends StatelessWidget {
-  const BookMainInfo({super.key});
-
+  const BookMainInfo({
+    super.key,
+    required this.bookModel,
+  });
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Text(
-          'The Title of The Book',
+          bookModel.volumeInfo?.title ?? 'null',
           style: textStyle30,
+          textAlign: TextAlign.center,
+          maxLines: 2,
         ),
-        Opacity(
-          opacity: 0.7,
-          child: Text(
-            'Book Author',
-            style: textStyle18,
-          ),
+        ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: bookModel.volumeInfo?.authors?.length,
+          itemBuilder: (context, index) {
+            return Opacity(
+              opacity: 0.7,
+              child: Text(
+                bookModel.volumeInfo?.authors?[index] ?? 'null',
+                textAlign: TextAlign.center,
+              ),
+            );
+          },
         ),
+
         SizedBox(
           height: 10,
         ),
-      //  BookRating(),
+        //  BookRating(),
       ],
     );
   }
