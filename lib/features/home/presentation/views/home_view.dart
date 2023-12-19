@@ -1,7 +1,10 @@
 import 'package:booky/core/manager/styles.dart';
+import 'package:booky/features/home/presentation/controller/home_cubit/cubit.dart';
+import 'package:booky/features/home/presentation/controller/home_cubit/states.dart';
 import 'package:booky/features/home/presentation/views/widgets/categories_list_view.dart';
 import 'package:booky/features/home/presentation/views/widgets/newest_books_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'widgets/home_app_bar.dart';
 
@@ -31,7 +34,20 @@ class HomeView extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const NewestBooksListView(),
+          BlocBuilder<HomeCubit, HomeStates>(
+            builder: (context, state) {
+              var cubit = BlocProvider.of<HomeCubit>(context);
+              if (state is HomeFailureState) {
+               return  Text(state.errorMessage);
+              } else if (state is HomeSuccessState) {
+                return NewestBooksListView(books: state.booksss);
+              } else {
+                 return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
         ],
       ),
     );

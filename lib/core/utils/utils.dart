@@ -8,3 +8,8 @@ const Color kPrimaryColor = Color(0xff100B20);
 const String homeViewPath = 'home';
 const String bookDetailsViewPath = 'details';
 const String searchViewPath = 'searchView';
+const String nullImage = '''https://encrypted-tbn0.gstatic.com/ima
+ges?q=tbn:ANd9GcT81rdkpAzH-RIdOOEmqEE4GmnQy2LdlodJPQ&usqp=CAU''';
+
+
+

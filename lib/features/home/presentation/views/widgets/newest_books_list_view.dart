@@ -1,9 +1,13 @@
+import 'package:booky/core/models/book_model.dart';
 import 'package:booky/features/home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
 
 class NewestBooksListView extends StatelessWidget {
-  const NewestBooksListView({super.key});
-
+  const NewestBooksListView({
+    super.key,
+    required this.books,
+  });
+  final List<BookModel> books;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,9 +20,11 @@ class NewestBooksListView extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          return const BookItem();
+          return BookItem(
+            bookModel:books[index],
+          );
         },
-        itemCount: 20,
+        itemCount: books.length,
       ),
     );
   }

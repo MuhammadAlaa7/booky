@@ -76,7 +76,7 @@ class BookMainInfo extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        BookRating(),
+      //  BookRating(),
       ],
     );
   }

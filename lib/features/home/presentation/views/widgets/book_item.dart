@@ -1,4 +1,5 @@
 import 'package:booky/core/manager/styles.dart';
+import 'package:booky/core/models/book_model.dart';
 import 'package:booky/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -6,7 +7,11 @@ import 'package:go_router/go_router.dart';
 import 'book_rating.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({super.key});
+  const BookItem({
+    super.key,
+    required this.bookModel,
+  });
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +29,13 @@ class BookItem extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(right: 20),
               clipBehavior: Clip.antiAlias,
-              height: 130,
+              height: bookModel.volumeInfo!.authors!.length > 2 ? 150 : 120,
+              width: 90,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Image.network(
-                testImage,
+                bookModel.volumeInfo?.imageLinks?.thumbnail ?? nullImage,
                 fit: BoxFit.fill,
               ),
             ),
@@ -42,26 +48,34 @@ class BookItem extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(
                       left: 10,
-                      top: 16,
+                      top: 0,
                       bottom: 2,
                     ),
                     width: MediaQuery.of(context).size.width * 0.6,
-                    child: const Text(
-                      'Here is the title of the book so long ',
+                    child: Text(
+                      bookModel.volumeInfo?.title ?? 'Null',
                       style: textStyle20,
                       textAlign: TextAlign.start,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10, vertical: 1.5),
-                    child: Opacity(
-                        opacity: 0.7,
-                        child: Text(
-                          'Book Author',
-                        )),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 1.5),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: bookModel.volumeInfo?.authors?.length,
+                      itemBuilder: (context, index) {
+                        return Opacity(
+                          opacity: 0.7,
+                          child: Text(
+                            bookModel.volumeInfo?.authors?[index] ?? 'null',
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -76,7 +90,7 @@ class BookItem extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const BookRating(),
+                         BookRating(bookModel: bookModel),
                       ],
                     ),
                   ),

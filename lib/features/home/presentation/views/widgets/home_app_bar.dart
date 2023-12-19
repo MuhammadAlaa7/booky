@@ -30,7 +30,8 @@ class HomeAppBar extends StatelessWidget {
               context.push('/$searchViewPath');
             },
             icon: const Icon(
-              FontAwesomeIcons.magnifyingGlass,
+             FontAwesomeIcons.magnifyingGlass,
+           
             ),
           )
         ],

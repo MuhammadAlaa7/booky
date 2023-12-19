@@ -15,7 +15,7 @@ class SearchedBookListView extends StatelessWidget {
         // YOU MUST MAKE IT SHRINK BECAUSE IT BECAME A UNIT
 
         itemBuilder: (context, index) {
-          return const BookItem();
+       //   return const BookItem();
         },
         itemCount: 20,
       ),
