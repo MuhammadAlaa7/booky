@@ -33,14 +33,26 @@ class BooklyServices {
     required String categoryTitle,
   }) async {
     List<dynamic> data = await BooklyApi.get(
-        endPoint: 'volumes?filtering=free-ebooks&q=subject:$categoryTitle&orderBy=relevance');
-    List<BookModel> programmingBooks = [];
+        endPoint:
+            'volumes?filtering=free-ebooks&q=subject:$categoryTitle&orderBy=relevance');
+    List<BookModel> relatedBooks = [];
     for (var book in data) {
-      programmingBooks.add(
+      relatedBooks.add(
         BookModel.fromJson(book),
       );
     }
-    print(programmingBooks[0].volumeInfo!.title);
-    return programmingBooks;
+    print(relatedBooks[0].volumeInfo!.title);
+    return relatedBooks;
+  }
+
+  static Future<List<BookModel>> getSearchedBooks(
+      {required String bookName}) async {
+    List<dynamic> data = await BooklyApi.get(
+        endPoint: 'volumes?filtering=free-ebooks&q=$bookName');
+    List<BookModel> searchedBooks = [];
+    data.map((book) {
+      searchedBooks.add(BookModel.fromJson(book));
+    }).toList();
+    return searchedBooks;
   }
 }

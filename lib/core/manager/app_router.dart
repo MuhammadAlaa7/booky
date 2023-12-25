@@ -2,6 +2,7 @@ import 'package:booky/core/models/book_model.dart';
 import 'package:booky/core/utils/utils.dart';
 import 'package:booky/features/home/presentation/controller/related_books_cubit/related_books_cubit.dart';
 import 'package:booky/features/home/presentation/views/home_view.dart';
+import 'package:booky/features/search/presentation/controller/search_cubit/search_cubit.dart';
 import 'package:booky/features/search/presentation/views/search_view.dart';
 import 'package:booky/features/splash/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,10 @@ class AppRouter {
           GoRoute(
             path: searchViewPath,
             builder: (BuildContext context, GoRouterState state) {
-              return const SearchView();
+              return  BlocProvider(
+                create: (context) => SearchCubit(),
+                child: const SearchView(),
+              );
             },
           ),
         ],

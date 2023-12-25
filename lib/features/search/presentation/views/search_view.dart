@@ -22,7 +22,7 @@ class SearchView extends StatelessWidget {
                   FontAwesomeIcons.arrowLeft,
                 ),
               ),
-              const Expanded(
+               Expanded(
                 child: SearchFormField(),
               ),
             ],
