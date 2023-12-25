@@ -1,5 +1,6 @@
 import 'package:booky/core/manager/app_router.dart';
 import 'package:booky/core/utils/utils.dart';
+import 'package:booky/features/home/presentation/controller/related_books_cubit/related_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,6 +22,9 @@ class BooklyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeCubit()..fetchNewestBooks(),
         ),
+        //  BlocProvider(
+        //   create: (context) => RelatedBooksCubit()..fetchRelatedBooks(),
+        // ),
       ],
       child: SafeArea(
         child: MaterialApp.router(

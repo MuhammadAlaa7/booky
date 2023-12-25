@@ -11,8 +11,9 @@ class CategoriesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeStates>(
-      builder: (context, state) {
+    return BlocConsumer<HomeCubit, HomeStates>(
+      listener: (context, state) {},
+      builder : (context, state) {
         var cubit = BlocProvider.of<HomeCubit>(context);
         return SizedBox(
           height: MediaQuery.of(context).size.height * 0.25,

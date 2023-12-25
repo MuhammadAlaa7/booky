@@ -22,15 +22,7 @@ class HomeView extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Text(
-              'Newest Books',
-              style: textStyle18.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
+         
           const SizedBox(
             height: 10,
           ),

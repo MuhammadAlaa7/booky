@@ -11,33 +11,19 @@ class HomeRepoImp extends HomeRepo {
   }
 
   @override
-  @override
-  Future<List<BookModel>> fetchBooksByCategory(
-      {required String categoryTitle}) async {
+  Future<List<BookModel>> fetchBooksByCategory({
+    required String categoryTitle,
+  }) async {
     return await BooklyServices.getBooksByCategory(
-        categoryTitle: categoryTitle);
+      categoryTitle: categoryTitle,
+    );
   }
 
-  fetchRelatedBooks() {
-    // TODO: implement fetchRelatedBooks
-    throw UnimplementedError();
-  }
-
-  @override
-  fetchBusinessBooks() {
-    // TODO: implement fetchBusinessBooks
-    throw UnimplementedError();
-  }
-
-  @override
-  fetchCookBooks() {
-    // TODO: implement fetchCookBooks
-    throw UnimplementedError();
-  }
-
-  @override
-  fetchScienceBooks() {
-    // TODO: implement fetchScienceBooks
-    throw UnimplementedError();
+  Future<List<BookModel>> fetchRelatedBooks({
+    required String categoryTitle,
+  }) async {
+    return await BooklyServices.getRelatedBooks(
+      categoryTitle: categoryTitle,
+    );
   }
 }
