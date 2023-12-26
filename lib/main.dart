@@ -33,6 +33,7 @@ class BooklyApp extends StatelessWidget {
             scaffoldBackgroundColor: kPrimaryColor,
             // primaryTextTheme: Typography().white,
             textTheme: Typography().white,
+
             iconTheme: const IconThemeData(
               color: Colors.white,
             ),

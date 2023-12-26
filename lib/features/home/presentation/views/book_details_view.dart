@@ -10,6 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'widgets/details_app_bar.dart';
+import 'widgets/details_image.dart';
+import 'widgets/preview_button.dart';
+import 'widgets/related_books_list_view.dart';
 
 class BookDetailsView extends StatefulWidget {
   const BookDetailsView({
@@ -59,32 +62,9 @@ class _BookDetailsViewState extends State<BookDetailsView> {
                 ),
               ),
             ),
-            const SimilarBooksListView(),
+            const RelatedBooksListView(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class DetailsImage extends StatelessWidget {
-  const DetailsImage({
-    super.key,
-    required this.bookModel,
-  });
-  final BookModel bookModel;
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
-      child: Image.network(
-        bookModel.volumeInfo?.imageLinks?.thumbnail ?? nullImage,
-        // cacheHeight: 300,
-        //  cacheWidth: 220,
-        height: MediaQuery.of(context).size.height * 0.30,
-        width: MediaQuery.of(context).size.height * 0.2,
-
-        fit: BoxFit.fill,
       ),
     );
   }
@@ -137,134 +117,6 @@ class BookMainInfo extends StatelessWidget {
           BookRating(bookModel: bookModel),
           //  BookRating(),
         ],
-      ),
-    );
-  }
-}
-
-class PreviewButton extends StatelessWidget {
-  const PreviewButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 40,
-        vertical: 20,
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(15),
-                backgroundColor: Colors.white,
-                // side: BorderSide(color: Colors.yellow, width: 5),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(15),
-                    topLeft: Radius.circular(15),
-                  ),
-                ),
-              ),
-              onPressed: () {},
-              child: Text(
-                'Free',
-                style: textStyle18.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(15),
-                backgroundColor: const Color(0xffEF8262),
-                // side: BorderSide(color: Colors.yellow, width: 5),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(15),
-                    topRight: Radius.circular(15),
-                  ),
-                ),
-              ),
-              onPressed: () {},
-              child: Text(
-                'Preview',
-                style: textStyle18.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SimilarBooksListView extends StatelessWidget {
-  const SimilarBooksListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<RelatedBooksCubit, RelatedBooksStates>(
-      builder: (context, state) {
-        var relatedBooks =
-            BlocProvider.of<RelatedBooksCubit>(context).relatedBooks;
-        return Padding(
-          padding: const EdgeInsets.only(left: 30, top: 16),
-          child: SizedBox(
-            height: 150,
-            child: ListView.builder(
-              physics: const ClampingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return SimilarBookItem(
-                  relatedBookModel: relatedBooks[index],
-                );
-              },
-              itemCount: relatedBooks.length,
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-// this is the similar books
-class SimilarBookItem extends StatelessWidget {
-  const SimilarBookItem({
-    super.key,
-    required this.relatedBookModel,
-  });
-  final BookModel relatedBookModel;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.pushReplacement(
-          '/$bookDetailsViewPath',
-          extra: relatedBookModel,
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.only(
-          right: 10,
-        ),
-        clipBehavior: Clip.antiAlias,
-        //height: ,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Image.network(
-          relatedBookModel.volumeInfo?.imageLinks?.thumbnail ?? nullImage,
-          fit: BoxFit.fill,
-        ),
       ),
     );
   }
