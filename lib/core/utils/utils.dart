@@ -20,9 +20,9 @@ final List<String> categoriesImages = [
 ];
 
 final List<String> categoriesTitles = [
-  'Programming',
-  'Science',
-  'Business',
-  'History',
-  'Cooking',
-];
+    'Programming',
+    'Science',
+    'Business',
+    'History',
+    'Cooking',
+  ];

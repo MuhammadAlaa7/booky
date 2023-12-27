@@ -1,8 +1,8 @@
 import 'package:booky/core/manager/styles.dart';
 import 'package:booky/core/models/book_model.dart';
 import 'package:booky/core/utils/utils.dart';
-import 'package:booky/features/home/presentation/controller/home_cubit/cubit.dart';
-import 'package:booky/features/home/presentation/controller/home_cubit/states.dart';
+import 'package:booky/features/home/presentation/controller/home_cubit/home_cubit.dart';
+import 'package:booky/features/home/presentation/controller/home_cubit/home_states.dart';
 import 'package:booky/features/home/presentation/controller/related_books_cubit/related_books_cubit.dart';
 import 'package:booky/features/home/presentation/controller/related_books_cubit/related_books_state.dart';
 import 'package:booky/features/home/presentation/views/widgets/book_rating.dart';

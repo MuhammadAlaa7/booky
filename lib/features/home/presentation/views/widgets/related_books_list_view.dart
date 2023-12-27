@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../controller/related_books_cubit/related_books_cubit.dart';
 import '../../controller/related_books_cubit/related_books_state.dart';
 
-
 class RelatedBooksListView extends StatelessWidget {
   const RelatedBooksListView({super.key});
 
@@ -15,22 +14,32 @@ class RelatedBooksListView extends StatelessWidget {
       builder: (context, state) {
         var relatedBooks =
             BlocProvider.of<RelatedBooksCubit>(context).relatedBooks;
-        return Padding(
-          padding: const EdgeInsets.only(left: 30, top: 16),
-          child: SizedBox(
-            height: 150,
-            child: ListView.builder(
-              physics: const ClampingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return RelatedBookItem(
-                  relatedBookModel: relatedBooks[index],
-                );
-              },
-              itemCount: relatedBooks.length,
+        if (state is RelatedBooksFailureState) {
+          return Center(
+            child: Text(state.errorMessage),
+          );
+        } else if (state is RelatedBooksSuccessState) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 30, top: 16),
+            child: SizedBox(
+              height: 150,
+              child: ListView.builder(
+                physics: const ClampingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return RelatedBookItem(
+                    relatedBookModel: relatedBooks[index],
+                  );
+                },
+                itemCount: relatedBooks.length,
+              ),
             ),
-          ),
-        );
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
       },
     );
   }

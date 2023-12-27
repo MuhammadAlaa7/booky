@@ -18,3 +18,7 @@ class HomeFailureState extends HomeStates {
   HomeFailureState(this.errorMessage); 
 
 }
+
+
+
+class ChangeListTitleState extends HomeStates{}

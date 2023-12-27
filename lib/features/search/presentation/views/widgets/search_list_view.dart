@@ -14,22 +14,40 @@ class SearchedBookListView extends StatelessWidget {
       builder: (context, state) {
         List<BookModel> searchedBooks =
             BlocProvider.of<SearchCubit>(context).searchedBooks;
-        return Padding(
-          padding: const EdgeInsets.only(
-            left: 30,
-            right: 50,
-          ),
-          child: ListView.builder(
-            // YOU MUST MAKE IT SHRINK BECAUSE IT BECAME A UNIT
+        if (state is SearchFailureState) {
+          return Center(
+            child: Text(state.errorMessage),
+          );
+        } else if (state is SearchSuccessState) {
+          return Padding(
+            padding: const EdgeInsets.only(
+              left: 30,
+              right: 50,
+            ),
+            
+            child: ListView.builder(
+              // YOU MUST MAKE IT SHRINK BECAUSE IT BECAME A UNIT
 
-            itemBuilder: (context, index) {
-              return BookItem(
-                bookModel: searchedBooks[index],
-              );
-            },
-            itemCount: searchedBooks.length,
-          ),
-        );
+              itemBuilder: (context, index) {
+                return BookItem(
+                  bookModel: searchedBooks[index],
+                );
+              },
+              itemCount: searchedBooks.length,
+            ),
+          );
+        } else if (state is SearchLoadingState) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return const Center(
+            child: Text(
+              'Searched Books Appear Here',
+              style: TextStyle(fontSize: 25, fontFamily: 'GT Sectra'),
+            ),
+          );
+        }
       },
     );
   }
