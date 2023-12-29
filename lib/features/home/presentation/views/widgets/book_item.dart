@@ -30,7 +30,7 @@ class BookItem extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(right: 20),
               clipBehavior: Clip.antiAlias,
-              height: bookModel.volumeInfo!.authors!.length >= 2 ? 150 : 120,
+              height: 120,
               width: 90,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -56,7 +56,7 @@ class BookItem extends StatelessWidget {
                       ),
                       width: MediaQuery.of(context).size.width * 0.6,
                       child: Text(
-                        bookModel.volumeInfo?.title ?? 'Null',
+                        bookModel.volumeInfo?.title ?? 'Null Title',
                         style: textStyle20,
                         textAlign: TextAlign.start,
                         maxLines: 2,
@@ -69,14 +69,12 @@ class BookItem extends StatelessWidget {
                       child: ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: bookModel.volumeInfo!.authors!.length >= 3
-                            ? 3
-                            : bookModel.volumeInfo?.authors?.length,
+                        itemCount: 1,
                         itemBuilder: (context, index) {
                           return Opacity(
                             opacity: 0.7,
                             child: Text(
-                              bookModel.volumeInfo?.authors?[index] ?? 'null',
+                              bookModel.volumeInfo?.authors?[index] ?? 'Null Authors',
                             ),
                           );
                         },

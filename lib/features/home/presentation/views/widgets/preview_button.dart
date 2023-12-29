@@ -1,11 +1,16 @@
+import 'dart:developer';
 import 'package:booky/core/manager/styles.dart';
+import 'package:booky/core/models/book_model.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PreviewButton extends StatelessWidget {
-  const PreviewButton({super.key});
-
+  const PreviewButton({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
+   
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 40,
@@ -49,7 +54,17 @@ class PreviewButton extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () async {
+                final url = bookModel.volumeInfo!.previewLink!;
+                Uri _url = Uri.parse(url);
+               
+                if (await canLaunchUrl(_url)) {
+                  launchUrl(_url);
+                } else {
+                  throw Exception('can not launch this url $_url');
+                }
+                log('preview tapped');
+              },
               child: Text(
                 'Preview',
                 style: textStyle18.copyWith(

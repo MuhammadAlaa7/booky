@@ -1,14 +1,9 @@
 import 'package:booky/core/manager/styles.dart';
 import 'package:booky/core/models/book_model.dart';
-import 'package:booky/core/utils/utils.dart';
-import 'package:booky/features/home/presentation/controller/home_cubit/home_cubit.dart';
-import 'package:booky/features/home/presentation/controller/home_cubit/home_states.dart';
 import 'package:booky/features/home/presentation/controller/related_books_cubit/related_books_cubit.dart';
-import 'package:booky/features/home/presentation/controller/related_books_cubit/related_books_state.dart';
 import 'package:booky/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'widgets/details_app_bar.dart';
 import 'widgets/details_image.dart';
 import 'widgets/preview_button.dart';
@@ -29,7 +24,8 @@ class _BookDetailsViewState extends State<BookDetailsView> {
   @override
   void initState() {
     BlocProvider.of<RelatedBooksCubit>(context).fetchRelatedBooks(
-        categoryTitle: widget.bookModel.volumeInfo!.categories![0]);
+        categoryTitle:
+            widget.bookModel.volumeInfo?.categories?[0] ?? 'No Title');
     super.initState();
   }
 
@@ -49,7 +45,7 @@ class _BookDetailsViewState extends State<BookDetailsView> {
             BookMainInfo(
               bookModel: widget.bookModel,
             ),
-            const PreviewButton(),
+            PreviewButton(bookModel: widget.bookModel),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
               child: Align(
@@ -95,7 +91,7 @@ class BookMainInfo extends StatelessWidget {
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: bookModel.volumeInfo?.authors?.length,
+            itemCount: 1,
             itemBuilder: (context, index) {
               return SizedBox(
                 width: 40,
@@ -112,9 +108,12 @@ class BookMainInfo extends StatelessWidget {
           ),
 
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
           BookRating(bookModel: bookModel),
+          const SizedBox(
+            height: 30,
+          ),
           //  BookRating(),
         ],
       ),

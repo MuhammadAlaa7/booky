@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchFormField extends StatefulWidget {
- const SearchFormField({
+  const SearchFormField({
     Key? key,
   }) : super(key: key);
 
@@ -38,6 +38,7 @@ class _SearchFormFieldState extends State<SearchFormField> {
                   .fetchSearchedBooks(bookName: controller.text);
               setState(() {
                 focusNode.unfocus();
+                controller.clear();
               });
             },
           ),
