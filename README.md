@@ -13,7 +13,7 @@ Here's a preview of the app screens:
 
 
 ### Home Screen
-![Home Screen](assets/screenshots/home.png)
+<img src="screenshots/home.png" alt="Home Screen" width="200" height="400">
 
-### Book Details Screen
-![Details Screen](assets/screenshots/details.png)
+### Details Screen
+<img src="screenshots/details.png" alt="Details Screen" width="200" height="400">
