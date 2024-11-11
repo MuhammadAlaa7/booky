@@ -11,8 +11,8 @@ class DetailsAppBar extends StatelessWidget {
       padding: const EdgeInsets.only(
         left: 30,
         right: 26,
-        bottom: 20,
-        top: 15,
+        bottom: 10,
+        top: 10,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
