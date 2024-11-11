@@ -1,16 +1,19 @@
-# booky
 
-A new Flutter project.
+# Book Finder App 📚
 
-## Getting Started
+A Flutter app that lets users search for books based on titles, authors, or keywords. This app uses the Google Books API to fetch and display book details. Users can explore book information.
 
-This project is a starting point for a Flutter application.
+## Features
+- **Splash Screen:** A welcoming screen with the app's branding.
+- **Home Screen:** Displaying book categories and the best-selling books 
+- **Book Details Screen:** Detailed information about each book, including title, author, description, similar books, and a link to preview.
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
+Here's a preview of the app screens:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Home Screen
+![Home Screen](assets/screenshots/home_screen.png)
+
+### Book Details Screen
+![Details Screen](assets/screenshots/details_screen.png)
